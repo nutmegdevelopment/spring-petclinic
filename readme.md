@@ -1,3 +1,20 @@
+NUTMEG COMMENTS:
+
+Pretty clunk at the moment while we are working things out
+
+Dockerfile can be used to setup Java 9 build environment
+docker build -t j9 .
+
+
+Easiest to mount the springapp out dir as a voume so you can work on it in an ide/editor
+docker run -p8080:8080 -it -v "$(pwd)":/app j9 /bin/bash
+
+in your container you can build the spring-app using J9 by just running mvn clean install
+
+To jlink it, you need to go into the mod-jlink directory and run mvn clean install.  This is currently not working, I suspect because of the automatic modules in the project
+
+
+
 # Spring PetClinic Sample Application [![Build Status](https://travis-ci.org/spring-projects/spring-petclinic.png?branch=master)](https://travis-ci.org/spring-projects/spring-petclinic/)
 
 ## Understanding the Spring Petclinic application with a few diagrams
