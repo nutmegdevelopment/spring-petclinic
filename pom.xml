@@ -63,16 +63,6 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
-        <exclusions>
-            <exclusion>
-                <!-- Modules tomcat.annotations.api and java.annotation export
-                      package javax.annotation to module spring.petclinic -->
-                <groupId>org.apache.tomcat.embed</groupId>
-                <artifactId>tomcat-annotations-api</artifactId>
-            </exclusion>
-            <!--Modules hibernate.jpa and tomcat.annotations.api export package javax.persistence to module jul.to.slf4j -->
-
-        </exclusions>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -83,16 +73,11 @@
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
     </dependency>
-      <!--<dependency>-->
-          <!--<groupId>javax.xml.bind</groupId>-->
-          <!--<artifactId>jaxb-api</artifactId>-->
-          <!--<version>2.3.0</version>-->
-      <!--</dependency>-->
-      <!--<dependency>-->
-          <!--<groupId>org.hibernate.validator</groupId>-->
-          <!--<artifactId>hibernate-validator</artifactId>-->
-          <!--<version>6.0.5.Final</version>-->
-      <!--</dependency>-->
+      <dependency>
+          <groupId>javax.xml.bind</groupId>
+          <artifactId>jaxb-api</artifactId>
+          <version>2.3.0</version>
+      </dependency>
 
     <!-- Databases - Uses HSQL by default -->
     <dependency>
@@ -144,11 +129,14 @@
       <artifactId>spring-boot-devtools</artifactId>
       <scope>runtime</scope>
     </dependency>
-      <!--<dependency>-->
-          <!--<groupId>javax.validation</groupId>-->
-          <!--<artifactId>validation-api</artifactId>-->
-          <!--<version>2.0.0.Final</version>-->
-      <!--</dependency>-->
+    <dependency>
+        <!-- Needed to update the version to this one because of https://github.com/jboss-javassist/javassist/issues/147 -->
+        <!-- Expect to be resolved in RELEASE version of spring boot -->
+      <groupId>org.javassist</groupId>
+      <artifactId>javassist</artifactId>
+      <version>3.22.0-GA</version>
+      <scope>runtime</scope>
+    </dependency>
   </dependencies>
 
   <build>
@@ -169,7 +157,7 @@
                 <encoding.reporting>${project.reporting.outputEncoding}</encoding.reporting>
                 <java.source>${maven.compiler.source}</java.source>
                 <java.target>${maven.compiler.target}</java.target>
-
+                <!--  -->
                 <!-- <jvmArguments>- -add-modules java.se.ee</jvmArguments> -->
               </additionalProperties>
             </configuration>
