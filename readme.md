@@ -1,13 +1,15 @@
 NUTMEG COMMENTS:
 
-Pretty clunk at the moment while we are working things out
+Pretty clunky at the moment while we are working things out
 
 Dockerfile can be used to setup Java 9 build environment
-docker build -t j9 .
+
+`docker build -t j9 .`
 
 
 Easiest to mount the springapp out dir as a voume so you can work on it in an ide/editor
-docker run -p8080:8080 -it -v "$(pwd)":/app j9 /bin/bash
+
+`docker run -p8080:8080 -it -v "$(pwd)":/app j9 /bin/bash`
 
 in your container you can build the spring-app using J9 by just running mvn clean install
 
